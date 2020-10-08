@@ -67,7 +67,19 @@ WebsiteUI.prototype.pageController = function(url) {
     case 'activity':
       self.renderActivity();
       self.goTop();
-      break;
+          break;
+      case 'MoS2':
+          self.renderMoS2();
+          self.goTop();
+          break;
+      case 'NRR':
+          self.renderNRR();
+          self.goTop();
+          break;
+      case 'Thermal':
+          self.renderThermal();
+          self.goTop();
+          break;
     default:
       self.renderHome();
       self.goTop();
@@ -200,4 +212,33 @@ WebsiteUI.prototype.renderActivity = function() {
     self.setupProjectImageLightbox($('#2008-nightmarket'));
     self.setupProjectImageLightbox($('#2008-aiesec-wncf'));
   });
+};
+
+WebsiteUI.prototype.renderMoS2 = function () {
+    var self = this;
+    self.unsetActiveMenu();
+    $.get("MoS2.html", function (data) {
+        $(".go-MoS2").parent().addClass("active");
+        self.hideHeader();
+        $("#main").html(data);
+    });
+};
+
+WebsiteUI.prototype.renderNRR = function () {
+    var self = this;
+    self.unsetActiveMenu();
+    $.get("NRR.html", function (data) {
+        $(".go-NRR").parent().addClass("active");
+        self.hideHeader();
+        $("#main").html(data);
+    });
+};
+
+WebsiteUI.prototype.renderThermal = function () {
+    var self = this;
+    $.get("Thermal.html", function (data) {
+        $(".go-Thermal").parent().addClass("active");
+ 
+        $("#main").html(data);
+    });
 };
